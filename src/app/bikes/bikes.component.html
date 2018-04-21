@@ -1,0 +1,51 @@
+
+<h2>Bajaj Pulsar</h2>
+<img src="../app/Images/bajaj_pulsar.jpg" />
+<h2>Bajaj Dominar</h2>
+<img src="../app/Images/bajaj-dominar.jpg" />
+<h2>Honda Activa</h2>
+<img src="../app/Images/honda-activa.jpg" />
+<h2>Kawasaki Vulcan</h2>
+<img src="../app/Images/kawasaki-vulcan.jpg" />
+<h2>Royal Enfield Classic</h2>
+<img src="../app/Images/royalenfield_classic.jpg" />
+<h2>Suzuki Intruder</h2>
+<img src="../app/Images/Suzuki_intruder.jpg" />
+<h2>Yamaha YZF</h2>
+<img src="../app/Images/yamaha_yzf.jpg" />
+<h2>TVS Jupiter</h2>
+<img src="../app/Images/tvs-jupiter.jpg" />
+
+<div>
+        <mat-progress-spinner *ngIf="!heroes"
+                              class="progress-spinner"
+                              
+                             >
+        </mat-progress-spinner>
+        <mat-list>
+            <mat-list-item *ngFor="let hero of heroes">
+                <img *ngIf="hero.default" class="cp"
+                     (click)="seeHeroDetails(hero);" mat-list-avatar
+                     src="assets/images/heroes/{{hero.id}}-thumbnail.jpg">
+                <img *ngIf="!hero.default"
+                     (click)="seeHeroDetails(hero);" mat-list-avatar src="assets/images/heroes/default.png">
+                <h3 mat-line [ngClass]="{'cp': hero.default}" (click)="seeHeroDetails(hero);"> {{hero.name}} </h3>
+                <p mat-line [ngClass]="{'cp': hero.default}" (click)="seeHeroDetails(hero);">
+                    <span>{{hero.alterEgo}}</span>
+                </p>
+                <div class="hero-actions">
+                    {{hero.likes}}
+                    <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}"
+                              [matTooltipPosition]="'above'"
+                              class="like-icon" (click)="like(hero)">
+                        favorite
+                    </mat-icon>
+                    <mat-icon class="remove-icon" *ngIf="!hero.default"
+                              (click)="remove(hero);">
+                        delete
+                    </mat-icon>
+                </div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
